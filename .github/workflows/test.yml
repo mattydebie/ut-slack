@@ -12,3 +12,4 @@ jobs:
           username: matty
           icon_url: https://ca.slack-edge.com/TCKAFJV8Q-U01QDBQBB9T-5568bb1ffb89-512
           channel: C04TAEX1RC1
+          message: "New deploy to *DEV*"

@@ -13,6 +13,9 @@ inputs:
   icon_url:
     description: "The project's icon"
     default: "https://deployer.org/img/logo.svg"
+  message: 
+    description: "the main message to send"
+    required: true
 
 runs:
   using: composite
@@ -29,7 +32,7 @@ runs:
           "username": "${{ inputs.username }}",
           "icon_url": "${{ inputs.icon_url }}",
           "blocks": [
-            {"type": "section", "text": {"type": "mrkdwn", "text": "New deploy to *DEV*"}},
+            {"type": "section", "text": {"type": "mrkdwn", "text": "${{ inputs.message }}"}},
             {"type": "section", "fields": [{"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}, {"type": "mrkdwn", "text": "*Author*:\n ${{ steps.info.outputs.author}}"}]},
             {"type": "divider"}
           ]
