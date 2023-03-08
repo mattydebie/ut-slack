@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test
     steps:
+      - uses: actions/checkout@v2
       - uses: mattydebie/ut-slack@main
         with:
           token: ${{ secrets.SLACK_TOKEN }}
