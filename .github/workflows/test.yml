@@ -7,5 +7,6 @@ jobs:
     steps:
       - uses: mattydebie/ut-slack@main
         with:
-          token: xoxb-fsdlfkjsa-sdlfkj
-          username: test
+          token: ${{ secrets.SLACK_TOKEN }}
+          username: matty
+          icon_url: https://ca.slack-edge.com/TCKAFJV8Q-U01QDBQBB9T-5568bb1ffb89-512
