@@ -18,12 +18,7 @@ runs:
   using: composite
   steps:
     - run: |
-        curl --data '{\
-          "channel": "${{ inputs.channel }}", \
-          "username": "${{ inputs.username }}", \
-          "icon_url": "${{ inputs.icon_url }}", \
-          "text": "hello world suckerss" \
-          }' \
+        curl --data '{ "channel": "${{ inputs.channel }}", "username": "${{ inputs.username }}", "icon_url": "${{ inputs.icon_url }}", "text": "hello world suckerss" }' \
         -H "Content-type: application/json" \
         -H "Authorization: Bearer ${{ inputs.token }}" \
         -X POST https://slack.com/api/chat.postMessage
