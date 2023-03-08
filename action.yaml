@@ -17,7 +17,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: 'echo "message=$(git log --format=%B -n 1 HEAD) >> $GITHUB_OUTPUT'
+    - run: 'echo "message=$(git log --format=%B -n 1 HEAD)" >> $GITHUB_OUTPUT'
       shell: bash
       id: info
 
