@@ -22,7 +22,8 @@ runs:
       id: info
 
     - run: |
-        curl --data '{ "channel": "${{ inputs.channel }}", "username": "${{ inputs.username }}", "icon_url": "${{ inputs.icon_url }}", "blocks": [{"type": "section", "text": {"type": "mrkdwn", "text": "New deploy to *DEV*"}}, {"type": "section", "text": {"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}}]}' \
+        curl --data '{
+          "channel": "${{ inputs.channel }}", "username": "${{ inputs.username }}", "icon_url": "${{ inputs.icon_url }}", "blocks": [{"type": "section", "text": {"type": "mrkdwn", "text": "New deploy to *DEV*"}}, {"type": "section", "text": {"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}}, {"type": "divider"}]}' \
         -H "Content-type: application/json" \
         -H "Authorization: Bearer ${{ inputs.token }}" \
         -X POST https://slack.com/api/chat.postMessage
