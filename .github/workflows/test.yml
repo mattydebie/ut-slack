@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test
     steps:
-      - uses: mattydebie/ut-slack
+      - uses: mattydebie/ut-slack@main
         with:
           token: xoxb-fsdlfkjsa-sdlfkj
           username: test
