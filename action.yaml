@@ -21,7 +21,7 @@ runs:
         curl --data '{\
           "channel": "${{ inputs.channel }}", \
           "username": "${{ inputs.username }}", \
-          "icon_url": "${{ inputs.icon_url }}" \
+          "icon_url": "${{ inputs.icon_url }}", \
           "text": "hello world suckerss" \
           }' \
         -H "Content-type: application/json" \
