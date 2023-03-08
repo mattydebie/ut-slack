@@ -4,14 +4,27 @@ inputs:
   token:
     description: "Slack bot token (xoxb-....)"
     required: true
+  channel:
+    description: "the channel to post to"
+    required: true
   username:
     description: "The project thats being built"
     default: "Deployer"
   icon_url:
     description: "The project's icon"
+    default: "https://deployer.org/img/logo.svg"
+
 runs:
   using: composite
   steps:
     - run: |
-        curl -d "text=HEllo world" -d "channel=C04TAEX1RC1" -d "username=${{ inputs.username }}" -d "icon_url=${{ inputs.icon_url }}" -H "Authorization: Bearer ${{ inputs.token }}" -X POST https://slack.com/api/chat.postMessage
+        curl --data '{\
+          "channel": "${{ inputs.channel }}", \
+          "username": "${{ inputs.username }}", \
+          "icon_url": "${{ inputs.icon_url }}" \
+          "text": "hello world suckerss" \
+          }' \
+        -H "Content-type: application/json" \
+        -H "Authorization: Bearer ${{ inputs.token }}" \
+        -X POST https://slack.com/api/chat.postMessage
       shell: bash
