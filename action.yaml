@@ -17,7 +17,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: 'echo "message=$(git log --format=%B -n 1 HEAD)" >> $GITHUB_OUTPUT'
+    - run: 'echo "message=$(git log --format=%B -n 1 HEAD); author=$(git log --format=%an -n1 HEAD)" >> $GITHUB_OUTPUT'
       shell: bash
       id: info
 
@@ -26,10 +26,12 @@ runs:
           "channel": "${{ inputs.channel }}",
           "username": "${{ inputs.username }}",
           "icon_url": "${{ inputs.icon_url }}",
-          "blocks": [{"type": "section",
-          "text": {"type": "mrkdwn", "text": "New deploy to *DEV*"}},
-          {"type": "section", "text": {"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}},
-          {"type": "divider"}]
+          "blocks": [
+            {"type": "section", "text": {"type": "mrkdwn", "text": "New deploy to *DEV*"}},
+            {"type": "section", "text": {"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}},
+            {"type": "section", "text": {"type": "mrkdwn", "text": "*Author*:\n ${{ steps.info.outputs.author}}"}},
+            {"type": "divider"}
+          ]
         }' \
         -H "Content-type: application/json" \
         -H "Authorization: Bearer ${{ inputs.token }}" \
