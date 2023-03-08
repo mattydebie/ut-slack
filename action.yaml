@@ -30,8 +30,7 @@ runs:
           "icon_url": "${{ inputs.icon_url }}",
           "blocks": [
             {"type": "section", "text": {"type": "mrkdwn", "text": "New deploy to *DEV*"}},
-            {"type": "section", "text": {"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}},
-            {"type": "section", "text": {"type": "mrkdwn", "text": "*Author*:\n ${{ steps.info.outputs.author}}"}},
+            {"type": "section", "fields": [{"type": "mrkdwn", "text": "*Commit*:\n ${{ steps.info.outputs.message}}"}}, {"type": "mrkdwn", "text": "*Author*:\n ${{ steps.info.outputs.author}}"}],
             {"type": "divider"}
           ]
         }' \
