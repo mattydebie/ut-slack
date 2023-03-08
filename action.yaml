@@ -30,7 +30,7 @@ runs:
       shell: bash
       id: info
 
-    - if: ${{ ${{ inputs.type }} == 'commit' }}
+    - if: ${{ inputs.type == 'commit' }}
       run: |
         curl --data '{
           "channel": "${{ inputs.channel }}",
@@ -47,7 +47,7 @@ runs:
         -X POST https://slack.com/api/chat.postMessage
       shell: bash
 
-    - if: ${{ ${{ inputs.type }} == 'plain' }}
+    - if: ${{ inputs.type == 'plain' }}
       run: |
         curl --data '{
           "channel": "${{ inputs.channel }}",
